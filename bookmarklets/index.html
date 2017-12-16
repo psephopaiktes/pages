@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+    <title>Cool Bookmarklet</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="description" content="ブラウザをより便利に利用できるようになるブックマークレットの紹介です。">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="wrap">
+
+
+    <!-- header-->
+    <header>
+        <h1>Cool Bookmarklets</h1>
+        <p>ブラウザをより便利に利用できるようになる<b>ブックマークレット</b>の紹介です。ブックマークレットとは、ブラウザのブックマークに登録しておき、特定のWebサイト上でクリックすることで利用できるプログラムです。例えば見ているWebサイトを素早くSNSでシェアしたり、URLをコピーしたりできます。Chrome拡張機能と違ってメモリを専有したりせず、気軽に利用できます。ブックマークバー上にフォルダを作ってまとめておくと、たくさん登録しても邪魔になりません。</p>
+        <h2>使い方</h2>
+        <ol>
+            <li>利用したいブックマークレットのボタンをブラウザのブックマークバーにドラッグ・アンド・ドロップして、ブックマークとして登録しておきます。
+            <li>対象となるWebサイトを開き、そのサイト上で登録しておいたブックマークレットをクリックします。
+        </ol>
+        <p>本ページ内で直接公開しているものは私が作成したブックマークレットです。SNSでのシェアなどは公式や外部の方が作られたものなどいろいろありますが、再配布を禁止しているところもあるので外部リンクで紹介しておきます。</p>
+        <small>最終更新: 2017/6/21</small>
+    </header>
+
+    <nav>
+        <h3>ブックマークレット一覧</h3>
+        <ul></ul>
+    </nav>
+
+
+    <section class="bookmarklet">
+        <h2>サイトのタイトルをコピー</h2>
+        <p>開いているWebサイトのタイトル( titleタグに指定されているテキスト )をクリップボードにコピーします。通常サイトのタイトルはソースを確認しないとコピーできないので、地味に便利です。</p>
+        <a href="
+        javascript:!function(a){
+            var b = document.createElement('textarea'),
+            c = document.getSelection();
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+        }(document.title);
+        ">copy title</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>URLをHTML形式でコピー</h2>
+        <p>開いているWebサイトのURLとタイトルを、HTMLのaタグ形式でクリップボードにコピーします。</p>
+        <a href="
+        javascript:!function(a){
+            var b = document.createElement('textarea'),
+            c = document.getSelection();
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+        }('<a href=%22' + document.location + '%22 target=%22brank_%22>' + document.title + '</a>');
+        ">copy html link</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>URLをMarkdown形式でコピー</h2>
+        <p>開いているWebサイトのURLを、Markdwonのリンク形式でクリップボードにコピーします。</p>
+        <a href="
+        javascript:!function(a){
+            var b = document.createElement('textarea'),
+            c = document.getSelection();
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+        }( '[' + document.title +'](' + document.location + ')' );
+        ">copy md link</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Google検索の期間指定</h2>
+        <p>Google検索の結果ページで実行すると、対象のサイトを3年間以内のものに限定します。</p>
+        <a href="
+        javascript:!function(undefined){
+            var today = new Date(),
+                y = today.getFullYear(),
+                m = today.getMonth()+1,
+                d = today.getDate();
+            console.log(m+'/'+d+'/'+y);
+            if( location.host=='www.google.co.jp' || location.host=='www.google.com' )
+                location.href=document.location+'%26tbs=cdr:1,cd_min:'+m+'/'+d+'/'+(y-3)+',cd_max:'+m+'/'+d+'/'+y;
+            else alert('this is NOT google site');
+        }();
+        ">search in 3years</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>サイトをGoogle翻訳</h2>
+        <p>日本語以外のWebページで実行すると、対象のサイトをGoogle翻訳で日本語に翻訳します。</p>
+        <a href="
+        javascript:!function(undefined){
+            window.open('https://translate.google.co.jp/translate?hl=ja&sl=auto&u='+location.href)
+        }();
+        ">translate JP</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>サイト内(ドメイン内)検索</h2>
+        <p>対象となるWebサイト全体の中(ドメイン内)でテキスト検索します。よくあるブックマークレットですが、挙動が微妙なものばかりなので自作しました。</p>
+        <a href="
+        javascript:!function(undefined){
+            var q = prompt('単語を入力し、Enterキーを押してください');
+            window.open('https://www.google.co.jp/search?q='+q+'+site:'+location.host);
+        }();
+        ">search in domain</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>スマホファーストビューチェッカー</h2>
+        <p>スマホで見た時にファーストビューがどのような表示になるか、<b>ブラウザの枠付きで</b>確認できます。とりあえずiPhone7だけ対応です。</p>
+        <a href="
+        javascript:!function(undefined){
+            var j=document.createElement('script');
+            j.src='https://psephopaiktes.github.io/bookmarklets/firstview-cheker/script.js';
+            document.body.appendChild(j);
+            var c=document.createElement('link');
+            c.rel='stylesheet';
+            c.href='https://psephopaiktes.github.io/bookmarklets/firstview-cheker/style.css';
+            document.head.appendChild(c);
+        }();
+        ">first-view</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+        <h4>説明</h4>
+        <p>事前にChromeのモバイルプレビューモードをONにします(⌘⌥I→⌘⇧M)。iPhone7を選択します。</p>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>クトゥルフ神話TRPG用ブックマークレット</h2>
+        <p>かなりニッチなブックマークレットです。自分用に作成しました。クトゥルフ神話TPRGでキャラクターシートを作成する際に便利です。</p>
+        <a href="
+        javascript:!function(undefined){
+            var j=document.createElement('script');
+            j.src='https://psephopaiktes.github.io/bookmarklets/CoC-dice-roller/script.js';
+            document.body.appendChild(j);
+            var c=document.createElement('link');
+            c.rel='stylesheet';
+            c.href='https://psephopaiktes.github.io/bookmarklets/CoC-dice-roller/style.css';
+            document.head.appendChild(c);
+        }();
+        ">CoC Dice Roller</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+        <h4>説明</h4>
+        <p>キャラシ作成サイト<a href="http://charasheet.vampire-blood.net/coc_pc_making.html" target="_blank">クトゥルフPC 作成ツール</a>をより便利に使用できるブックマークレットです。
+        <ul>
+            <li>一括で能力値ダイスをふって、自動入力</li>
+            <li>作成したキャラを読みやすい形式でキャラクターシートに出力</li>
+        </ul>
+        する機能を追加します。 </p>
+        <h4>使い方</h4>
+        <ol>
+            <li><a href="http://charasheet.vampire-blood.net/coc_pc_making.html" target="_blank">クトゥルフPC 作成ツール</a>にアクセスします。
+            <li>事前に登録しておいたこのブックマークレット ( 保存したブックマーク ) をクリックします。
+            <li>ページの上部にボタンが2つ出現します。
+        </ol>
+        <h4>DiceRoll ボタン</h4>
+        <ul>
+            <li>基本能力値をランダムに決定し、自動で入力します。
+            <li>ボタンを押すたびにダイスがふり直されます。
+            <li>すでに能力が入力されている場合でも上書きしてしまうのでご注意ください。
+        </ul>
+        <h4>キャラクターシート出力</h4>
+        <ul>
+            <li>入力されている能力値から簡易的なキャラクターシートを出力します
+            <li>ボタンを押すと、クリップボードにキャラクターシートがコピーされます
+            <li>メモ帳などにCtrl+Vでペーストしてください。
+        </ul>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Twitterでシェア</h2>
+        <p>現在開いているページをTwitterでつぶやきます。Twitter公式のブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://dev.twitter.com/web/bookmarklet" target="brank_">Share Bookmarklet — Twitter Developers</a></cite>
+        <p>ただし、公式そのままだとhttpsのサイトでうまく動作しないため、以下のサイトで紹介されているものを利用することをおすすめします。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://eltransportador.seesaa.net/article/388305065.html" target="brank_">Twitterの共有ブックマークレットをHTTPSなサイトでも使えるように: DNAが支配する世界</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Facebookでシェア</h2>
+        <p>現在開いているページをFacebookにシェアします。Facebook公式のブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://www.facebook.com/share_options.php" target="brank_">ブックマークレットを共有する</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Google+でシェア</h2>
+        <p>現在開いているページをGoogle+でシェアします。Google公式のブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://developers.google.com/+/web/share/#sharelink-bookmarklet" target="brank_">Share  |  Google+ Platform for Web  |  Google Developers</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>はてなブックマークに登録</h2>
+        <p>現在開いているページをはてブします。はてな公式のブックマークレットです。(確認にはログインが必要です。)</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://b.hatena.ne.jp/register" target="brank_">はてなブックマーク - はてなブックマークをはじめる (セットアップ)</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Tumblrでシェア</h2>
+        <p>現在開いているページをTumblrにシェアします。Tumblr公式のブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://www.tumblr.com/apps" target="brank_">アプリ | Tumblr</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Pocketに保存</h2>
+        <p>現在開いているページをPocketに保存します。Pocket公式のブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://getpocket.com/add/?ep=1" target="brank_">Pocket: 保存方法</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Feedlyに登録</h2>
+        <p>現在開いているページのRSSをFeedlyに登録するためのページを開きます。Feedly以外の利用者のためのブックマークレットもあります。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://daisukeblog.com/?p=2268" target="brank_">ニュースリーダー『Feedly』の新規登録などのブックマークレットまとめ | 代助のブログ</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Pinterestに画像をピンする</h2>
+        <p>現在開いているページの画像を選択してピンできます。Pinterest公式では公開が終了していますが、こちらに登録の説明があります。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://gist.github.com/kentbrew/142cb69124223a5d0f3b3fd7fc2c6bd0" target="brank_">How to recreate your long-lost Pinterest bookmarklet.</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>テンプレートからGmailを作成 / ページをGmailで共有</h2>
+        <p>事前にテンプレートを設定でき、実行するとすぐにその形からメールを作成できる。もうひとつは、在開いているページのタイトル・URLを本文に含めてメール作成できる。かなり古いブックマークレットですが問題無く動きます。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://bookmarklet.web.fc2.com/bookmarklet_070.html" target="brank_">Gmailテンプレート :: ブックマークレット</a></cite>
+        <cite>source:&nbsp;&nbsp;<a href="http://bookmarklet.web.fc2.com/bookmarklet_046.html" target="brank_">Gmailで送信 :: ブックマークレット</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>YouTubeを保存する</h2>
+        <p>YouTubeの動画をmp3(音声)、mp4(動画)で保存できるサービス"Offliberty"が提供するブックマークレットです。YouTubeで動画を開き実行すると、開いている動画を変換してくれます。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://offliberty.com/#bookmarklet" target="brank_">Offliberty - evidence of offline life</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>次/前のページへ</h2>
+        <p>URL中の数字を増加する、つまり複数あるページの次/前のページへ移動できるブックマークレットです。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://www.squarefree.com/bookmarklets/misc.html#increment" target="brank_">Miscellaneous Bookmarklets</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>ページの読み込み速度を計測する</h2>
+        <p>開発者向けツール。実行すると開いているページの読み込み速度を計測します。ブックマークレットはページの一番下にあります。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://okor.github.io/justice/" target="brank_">justice</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>ページのHTMLチェック</h2>
+        <p>開発者向けツール。HTMLが正しい文法・規約に沿って記述されているかとアクセシビリティのチェックし、レポートを出力してくれる。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://htmlcs.acri.jp/" target="brank_">HTML_CodeSniffer</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Webページで使われているフォントを調べる</h2>
+        <p>開発者向けツール。選択文字のフォント指定を表示できる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できる。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://www.chengyinliu.com/whatfont.html" target="brank_">WhatFont Tool - The easiest way to inspect fonts in webpages « Chengyin Liu</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>ページのレスポンシブチェック</h2>
+        <p>開発者向けツール。Webページを他のデバイスで表示したときどのように表示されるかチェックできる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できる。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://lab.maltewassermann.com/viewport-resizer/" target="brank_">Responsive design testing tool – Viewport Resizer – Emulate various screen resolutions - Best developer device testing toolbar</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>ページにグリッドを表示</h2>
+        <p>開発者向けツール。Webページにグリッドを重ねて表示してくれる。グリッドは自由に設定できる。</p>
+        <cite>source:&nbsp;&nbsp;<a href="http://www.sprymedia.co.uk/article/Design" target="brank_">Allan Jardine | Reflections | Design</a></cite>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Webページをシューティングゲームで破壊する</h2>
+        <p>すばらしいクソブックマークレットです。表示しているWebページ上でシューティングゲームができます。</p>
+        <cite>source:&nbsp;&nbsp;<a href="https://kickassapp.com/" target="brank_">Kick Ass - Destroy the web</a></cite>
+    </section>
+
+    <!-- Footer-->
+    <footer>
+        <a id="gotop" href="#top" title="上へスクロール">▲</a>
+        <a href="https://github.com/psephopaiktes/bookmarklets/" target="brank_">view on GItHub</a>&nbsp;
+        <a href="http://hirata.works/about.html" target="brank_">製作者</a>
+        <p><small>© hirata 2017</small></p>
+    </footer>
+
+
+<!--
+
+// 公開が終了しているブックマークレット。自分用メモ
+
+# Pinterest
+javascript:void((function(d){e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);d.body.appendChild(e);}(document)));
+
+# Amazonほしいものリスト
+javascript:(function(){var w=window,l=w.location,d=w.document,s=d.createElement('script'),e=encodeURIComponent,o='object',n='AUWLBookjaJP',u='https://www.amazon.co.jp/wishlist/add',r='readyState',T=setTimeout,a='setAttribute',g=function(){d[r]&&d[r]!='complete'?T(g,200):!w[n]?(s[a]('charset','UTF-8'),s[a]('src',u+'.js?loc='+e(l)+'&b='+n),d.body.appendChild(s),f()):f()},f=function(){!w[n]?T(f,200):w[n].showPopover()};typeof s!=o?l.href=u+'?u='+e(l)+'&t='+e(d.title):g()}())
+
+-->
+
+
+
+</div><!-- /wrap -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src='script.js'></script>
+</body>
+</html>

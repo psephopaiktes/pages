@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+body{
+    font: 16px/1.7 "游ゴシック","Yu Gothic",YuGothic,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN",Meiryo,"メイリオ",Helvetica,Arial,Sans-Serif;
+    color: #333;
+    font-weight: 500;
+    font-feature-settings : "pwid";
+}
+a{ color: #08c }
+a:active, a:visited{ color: #005580 }
+
+.wrap{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+header{
+    border-bottom: 1px solid #666;
+    padding-bottom: 40px;
+}
+header h1{
+    font: 40px Arial,Sans-Serif;
+    font-weight: bold;
+    color: rgba(0,0,0,0.8);
+    letter-spacing: .05em;
+    text-shadow: -0.03em 0 0 red, 0.03em 0 0 cyan;
+}
+
+nav{
+    border-bottom: 1px dashed #999;
+    padding: 40px 0;
+}
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+nav li{
+    width: 50%;
+    line-height: 2;
+}
+
+
+.bookmarklet{
+    border-bottom: 1px dashed #999;
+    padding: 20px 0 50px;
+}
+.bookmarklet>a{
+    background-color: #999;
+    padding: 8px 16px;
+    border-radius: 3px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+}
+.bookmarklet small{
+    color: #999;
+}
+.bookmarklet cite{
+    display: block;
+    margin: 20px 0 0;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #999;
+}
+.bookmarklet cite a{
+    color: #666;
+}
+
+
+footer{
+    text-align: center;
+    margin: 40px 0;
+    color: #666;
+    font-size: 16px;
+}
+#gotop{
+    display: block;
+    width: 60px; height: 60px;
+    border-radius: 3px;
+    background-color: #000;
+    text-decoration: none;
+    box-shadow: 1px 1px 3px rgba(#000,.2);
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center;
+    position: fixed;
+    bottom: 10px; right: 10px;
+    color: #fff;
+    opacity: .3;
+}
+#gotop:hover,#gotop:active{
+    opacity: .8;
+    transition: .3s;
+}
+
+@media screen and ( max-width:1200px ){
+    nav ul{
+        flex-direction: column;
+    }
+    nav li{
+        width: 100%;
+    }
+}
