@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Mah-Gin Rummy</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body><div id="wrap">
+
+<h1>Mah-Gin Rummy</h1>
+麻雀ラミーは世界3大トランプゲームのひとつである、<br>
+<b>ジン・ラミー</b>に麻雀の役を当てはめたアレンジルールです。<br>
+通常のジン・ラミーに以下の追加ルールを加え、<br>
+和了った際の役構成で点数が決定します。<br>
+<a class="gin" href="http://playingcards.jp/game/ginrummy/rule.html" target="blank"> ジン・ラミーのルール </a><br>
+<div class="left">
+・ ノックなし。ジン上がりのみ。<br>
+・ ジョーカー2枚使用。<br>
+・ スコアは役のみで決定。敗者の手札は影響なし<br>
+・ 300点マッチが基本<br>
+・ リーチ後の役変更(待ち牌以外で和了る)は禁止。<br>
+・ ゲーム後にドラを決める。積札の底のカードの数字+1がドラ数字。<br>
+・ ドラ1枚につき+5。ただしジョーカで代用は不可<br>
+・ 海底は積札の底から2枚目<br>
+・ ()は和了った時にジョーカーがある場合のスコア
+</div>
+
+
+<h2>一翻役</h2>
+
+
+<div class="yaku">
+    <h3>和了 [ホーラ]</h3>
+    <b>+10</b>
+    <p>アガり点。基本スコア。全ての役と複合</p>
+</div>
+
+<div class="yaku">
+    <h3>翻牌 [ファンパイ]</h3>
+    <b>+10(+5)</b>
+    <ul class="card">
+        <li class="bk">♠<br>K</li>
+        <li class="rd">♥<br>K</li>
+        <li class="rd">♦<br>K</li>
+        <li class="rd">♣<br>K</li>
+        <li class="bk gray">♣<br>5</li>
+        <li class="bk gray">♣<br>6</li>
+        <li class="bk gray">♣<br>7</li>
+        <li class="rd gray">♥<br>2</li>
+        <li class="rd gray">♦<br>2</li>
+        <li class="rd gray">♣<br>2</li>
+    </ul>
+    <p>A, J, Q, Kのいずれかの4枚セットを作る</p>
+</div>
+
+<div class="yaku">
+    <h3>平和 [ピンフォー]</h3>
+    <b>+10</b>
+    <ul class="card">
+        <li class="bk">♠<br>9</li>
+        <li class="bk">♠<br>10</li>
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♦<br>4</li>
+        <li class="rd">♦<br>5</li>
+        <li class="rd">♦<br>6</li>
+        <li class="rd">♦<br>7</li>
+        <li class="bk">♣<br>A</li>
+        <li class="bk">♣<br>2</li>
+        <li class="bk">♣<br>3</li>
+    </ul>
+    <p>順子(シークエンス)のみの形</p>
+</div>
+
+<div class="yaku">
+    <h3>断么九 [タンヤオチュー]</h3>
+    <b>+10</b>
+    <ul class="card">
+        <li class="rd">♥<br>A</li>
+        <li class="rd">♥<br>2</li>
+        <li class="rd">♥<br>3</li>
+        <li class="rd">♥<br>4</li>
+        <li class="bk">♠<br>3</li>
+        <li class="rd">♦<br>3</li>
+        <li class="bk">♣<br>3</li>
+        <li class="rd">♦<br>5</li>
+        <li class="rd">♦<br>6</li>
+        <li class="rd">♦<br>7</li>
+    </ul>
+    <p>A~9のみの形</p>
+</div>
+
+<div class="yaku">
+    <h3>伍対子 [ウートイツ]</h3>
+    <b>-5(和了と合わせると+5)</b>
+    <ul class="card">
+        <li class="bk">♠<br>2</li>
+        <li class="rd">♥<br>2</li>
+        <li class="bk">♠<br>5</li>
+        <li class="bk">♣<br>5</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♦<br>7</li>
+        <li class="rd">♥<br>8</li>
+        <li class="bk">♣<br>8</li>
+        <li class="bk">♠<br>Q</li>
+        <li class="rd">♥<br>Q</li>
+    </ul>
+    <p>特殊型。対子(同じ数字のペア)を5つ作る。ただし同数字が4枚あってはいけない。</p>
+</div>
+
+<div class="yaku">
+    <h3>立直 [リーチ]</h3>
+    <b>+10(+5)</b>
+    <p>天牌時に宣言して和了ると加点。和了られると相手に加点。</p>
+</div>
+
+<div class="yaku">
+    <h3>ダブルリーチ</h3>
+    <b>+10</b>
+    <p>最初の捨て牌と同時に立直をかける</p>
+</div>
+
+<div class="yaku">
+    <h3>一発</h3>
+    <b>+10</b>
+    <p>立直後、次のツモまでに和了る</p>
+</div>
+
+<div class="yaku">
+    <h3>オープン立直</h3>
+    <b>+5</b>
+    <p>立直した後、手札を相手に公開してプレイする</p>
+</div>
+
+<div class="yaku">
+    <h3>海底摸月 [ハイテイモーユエ]</h3>
+    <b>+10</b>
+    <p>海底札で和了る</p>
+</div>
+
+<div class="yaku">
+    <h3>河底撈魚 [ホウテイラオユイ]</h3>
+    <b>+10</b>
+    <p>河底札で和了る</p>
+</div>
+
+<div class="yaku">
+    <h3>流し満貫</h3>
+    <b>+10(+5)</b>
+    <p>ジョーカーを捨てると和了った時加点</p>
+</div>
+
+
+<h2>二翻役</h2>
+
+
+<div class="yaku">
+    <h3>一盃口 [イーペーコー]</h3>
+    <b>+20(+15)</b>
+    <ul class="card">
+        <li class="bk">♠<br>5</li>
+        <li class="bk">♠<br>6</li>
+        <li class="bk">♠<br>7</li>
+        <li class="rd">♥<br>5</li>
+        <li class="rd">♥<br>6</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♥<br>8</li>
+        <li class="bk gray">♠<br>10</li>
+        <li class="rd gray">♥<br>10</li>
+        <li class="bk gray">♣<br>10</li>
+    </ul>
+    <p>同ランクの順子を2つ作る。</p>
+</div>
+
+<div class="yaku">
+    <h3>対々和 [トイトイフォー]</h3>
+    <b>+20(+15)</b>
+    <ul class="card">
+        <li class="rd">♥<br>2</li>
+        <li class="bk">♣<br>2</li>
+        <li class="rd">♦<br>2</li>
+        <li class="bk">♠<br>7</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♦<br>7</li>
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♥<br>J</li>
+        <li class="bk">♣<br>J</li>
+        <li class="rd">♦<br>J</li>
+    </ul>
+    <p>刻子(セット)のみの形</p>
+</div>
+
+<div class="yaku">
+    <h3>混一色 [ホンイーソー]</h3>
+    <b>+20(+15)</b>
+    <ul class="card">
+        <li class="rd">♥<br>8</li>
+        <li class="rd">♥<br>9</li>
+        <li class="rd">♥<br>10</li>
+        <li class="rd">♦<br>2</li>
+        <li class="rd">♦<br>3</li>
+        <li class="rd">♦<br>4</li>
+        <li class="rd">♦<br>9</li>
+        <li class="rd">♦<br>10</li>
+        <li class="rd">♦<br>J</li>
+        <li class="rd">♦<br>Q</li>
+    </ul>
+    <p>赤(♥♦)か黒(♠♣)のみでつくる形。必ず平和と複合</p>
+</div>
+
+<div class="yaku">
+    <h3>一気通貫 [イーチートンコン]</h3>
+    <b>+20(+15)</b>
+    <ul class="card">
+        <li class="rd">♥<br>2</li>
+        <li class="rd">♥<br>3</li>
+        <li class="rd">♥<br>4</li>
+        <li class="rd">♥<br>5</li>
+        <li class="rd">♥<br>6</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♥<br>8</li>
+        <li class="bk gray">♠<br>3</li>
+        <li class="bk gray">♣<br>3</li>
+        <li class="rd gray">♦<br>3</li>
+    </ul>
+    <p>6枚以上のシークエンスを含む形</p>
+</div>
+
+<div class="yaku">
+    <h3>混全帯么 [ホンチャンタイヤオ]</h3>
+    <b>+20</b>
+    <ul class="card">
+        <li class="bk">♠<br>A</li>
+        <li class="rd">♥<br>A</li>
+        <li class="rd">♦<br>A</li>
+        <li class="rd">♥<br>J</li>
+        <li class="rd">♥<br>Q</li>
+        <li class="rd">♥<br>K</li>
+        <li class="bk">♣<br>3</li>
+        <li class="bk">♣<br>4</li>
+        <li class="jk">$</li>
+        <li class="bk">♣<br>6</li>
+    </ul>
+    <p>全ての組にAかKかJokerが使われている</p>
+</div>
+
+<div class="yaku">
+    <h3>十不対 [シープートイ]</h3>
+    <b>+20(+15)</b>
+    <ul class="card">
+        <li class="rd">♦<br>A</li>
+        <li class="bk">♠<br>2</li>
+        <li class="bk">♣<br>4</li>
+        <li class="bk">♠<br>5</li>
+        <li class="rd">♥<br>6</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♥<br>9</li>
+        <li class="bk">♣<br>J</li>
+        <li class="rd">♥<br>Q</li>
+        <li class="rd">♦<br>K</li>
+    </ul>
+    <p>特殊型。全ての数字をバラバラにする。マークはなんでもよい。他の役とは複合しない</p>
+</div>
+
+
+<h2>三翻役</h2>
+
+
+<div class="yaku">
+    <h3>純全帯么 [ジュンチャンタイヤオ]</h3>
+    <b>+30</b>
+    <ul class="card">
+        <li class="bk">♠<br>A</li>
+        <li class="bk">♠<br>2</li>
+        <li class="bk">♠<br>3</li>
+        <li class="rd">♥<br>10</li>
+        <li class="rd">♥<br>J</li>
+        <li class="rd">♥<br>Q</li>
+        <li class="rd">♥<br>K</li>
+        <li class="bk">♠<br>K</li>
+        <li class="rd">♦<br>K</li>
+        <li class="bk">♣<br>K</li>
+    </ul>
+    <p>全ての組にAかKが使われている</p>
+</div>
+
+<div class="yaku">
+    <h3>両槓子 [リャンカンツ]</h3>
+    <b>+30</b>
+    <ul class="card">
+        <li class="bk">♠<br>2</li>
+        <li class="rd">♥<br>2</li>
+        <li class="rd">♦<br>2</li>
+        <li class="bk">♣<br>2</li>
+        <li class="jk">$</li>
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♥<br>J</li>
+        <li class="rd">♦<br>J</li>
+        <li class="bk">♣<br>J</li>
+        <li class="jk">$</li>
+    </ul>
+    <p>５枚セットを2つ作る。Jokerが2枚必要になる</p>
+</div>
+
+<div class="yaku">
+    <h3>小三元 [シャオサンヤン]</h3>
+    <b>+30</b>
+    <ul class="card">
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♥<br>J</li>
+        <li class="bk">♣<br>J</li>
+        <li class="bk">♠<br>Q</li>
+        <li class="bk">♣<br>Q</li>
+        <li class="jk">$</li>
+        <li class="bk">♠<br>K</li>
+        <li class="rd">♥<br>K</li>
+        <li class="bk">♣<br>K</li>
+        <li class="rd">♦<br>K</li>
+    </ul>
+    <p>J, Q, KとJokerのみで対々和</p>
+</div>
+
+<div class="yaku">
+    <h3>清一色 [チンイーソー]</h3>
+    <b>+30</b>
+    <ul class="card">
+        <li class="rd">♦<br>A</li>
+        <li class="rd">♦<br>2</li>
+        <li class="rd">♦<br>3</li>
+        <li class="rd">♦<br>6</li>
+        <li class="rd">♦<br>7</li>
+        <li class="rd">♦<br>8</li>
+        <li class="rd">♦<br>9</li>
+        <li class="rd">♦<br>J</li>
+        <li class="rd">♦<br>Q</li>
+        <li class="rd">♦<br>K</li>
+    </ul>
+    <p>1つのマークのみの形。平和と複合</p>
+</div>
+
+<div class="yaku">
+    <h3>十不塔 [シープータオ]</h3>
+    <b>+30</b>
+    <ul class="card">
+        <li class="bk">♠<br>3</li>
+        <li class="rd">♥<br>3</li>
+        <li class="bk">♣<br>4</li>
+        <li class="bk">♣<br>5</li>
+        <li class="rd">♥<br>8</li>
+        <li class="rd">♦<br>9</li>
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♦<br>Q</li>
+        <li class="rd">♦<br>K</li>
+        <li class="rd">♠<br>K</li>
+    </ul>
+    <p>特殊型。天和の一種。配牌段階で組が一切なく完全にバラバラ。<br>Jokerがあってもいいが、組が作成不可であること。</p>
+</div>
+
+<div class="yaku">
+    <h3>地和 [チーフォー]</h3>
+    <b>+30(+20)</b>
+    <p>最初の交換で和了る</p>
+</div>
+
+
+<h2>役満 ※他の役とは複合しない</h2>
+
+
+<div class="yaku">
+    <h3>九蓮宝燈 [チューレンパオトン]</h3>
+    <b>+100</b>
+    <ul class="card">
+        <li class="rd">♥<br>A</li>
+        <li class="rd">♥<br>2</li>
+        <li class="rd">♥<br>3</li>
+        <li class="rd">♥<br>4</li>
+        <li class="rd">♥<br>5</li>
+        <li class="rd">♥<br>6</li>
+        <li class="rd">♥<br>7</li>
+        <li class="rd">♥<br>8</li>
+        <li class="rd">♥<br>9</li>
+        <li class="bk">♣<br>9</li>
+    </ul>
+    <p>A~9のシークエンス+Aか9</p>
+</div>
+
+<div class="yaku">
+    <h3>国士無双 [コクシムソウ]</h3>
+    <b>+100</b>
+    <ul class="card">
+        <li class="bk">♠<br>A</li>
+        <li class="rd">♥<br>A</li>
+        <li class="bk">♣<br>A</li>
+        <li class="rd">♦<br>A</li>
+        <li class="bk">♠<br>K</li>
+        <li class="rd">♥<br>K</li>
+        <li class="bk">♣<br>K</li>
+        <li class="rd">♦<br>K</li>
+        <li class="jk">$</li>
+        <li class="jk">$</li>
+    </ul>
+    <p>A, K, Jokerを全て揃える</p>
+</div>
+
+
+<div class="yaku">
+    <h3>大三元 [ターサンヤン]</h3>
+    <b>+100</b>
+    <ul class="card">
+        <li class="bk">♠<br>J</li>
+        <li class="rd">♥<br>J</li>
+        <li class="rd">♦<br>J</li>
+        <li class="rd">♥<br>Q</li>
+        <li class="bk">♣<br>Q</li>
+        <li class="rd">♦<br>Q</li>
+        <li class="bk">♠<br>K</li>
+        <li class="rd">♥<br>K</li>
+        <li class="bk">♣<br>K</li>
+        <li class="rd">♦<br>K</li>
+    </ul>
+    <p>J, Q, Kのみで対々和</p>
+</div>
+
+<div class="yaku">
+    <h3>清一通 [チンイーチー]</h3>
+    <b>+100</b>
+    <ul class="card">
+        <li class="bk">♣<br>A</li>
+        <li class="bk">♣<br>2</li>
+        <li class="bk">♣<br>3</li>
+        <li class="bk">♣<br>4</li>
+        <li class="bk">♣<br>5</li>
+        <li class="bk">♣<br>6</li>
+        <li class="bk">♣<br>7</li>
+        <li class="bk">♣<br>8</li>
+        <li class="bk">♣<br>9</li>
+        <li class="bk">♣<br>10</li>
+    </ul>
+    <p>10枚の一気通貫。ただしJokerがある場合は清一色扱い</p>
+</div>
+
+<div class="yaku">
+    <h3>大車輪</h3>
+    <b>+100</b>
+    <ul class="card">
+        <li class="rd">♥<br>2</li>
+        <li class="rd">♥<br>3</li>
+        <li class="rd">♥<br>4</li>
+        <li class="rd">♥<br>5</li>
+        <li class="rd">♥<br>6</li>
+        <li class="bk">♣<br>2</li>
+        <li class="bk">♣<br>3</li>
+        <li class="bk">♣<br>4</li>
+        <li class="bk">♣<br>5</li>
+        <li class="bk">♣<br>6</li>
+    </ul>
+    <p>Jokerなし、5枚ずつの一盃口</p>
+</div>
+
+<div class="yaku">
+    <h3>天和 [テンフォー]</h3>
+    <b>+100(+50)</b>
+    <p>配牌で和了る。</p>
+</div>
+
+
+
+<!-- フッター -->
+<footer>
+<a href="#wrap">トップへ</a>
+    <p><small>
+        &copy; hirata
+    </small></p>
+</footer>
+
+</div></body>
+
+</html>

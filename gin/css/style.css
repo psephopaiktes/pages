@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+/* CSSリセット */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,
+strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,
+caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,
+figure,footer,header,hgroup,menu,nav,section,summary,time,mark,
+audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;
+vertical-align:baseline;background:transparent;font-weight:normal;}
+body{line-height:1}article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{display:block}
+ul{list-style:none}blockquote,q{quotes:none}blockquote:before,
+blockquote:after,q:before,q:after{content:none}a{margin:0;padding:0;
+font-size:100%;vertical-align:baseline;background:transparent}
+del{text-decoration:line-through}abbr[title],dfn[title]
+{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;
+margin:1em 0;padding:0}input,select{vertical-align:middle}
+
+/*********************************************************/
+
+
+
+body{
+    background-color: #333;
+    font: 18px/36px "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",'メイリオ',Meiryo,Helvetica,Arial,Sans-Serif;
+}b{ font-weight: bold; }
+
+#wrap{
+    color: #fff;
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1{
+    color: #555;
+    font-size: 48px;
+    letter-spacing: -3px;
+    line-height: 96px;
+    font-weight: bold;
+    text-shadow: 0 12px 8px #1c1c1c,0 -2px 1px #777;
+}
+
+a{
+    color: #f66;
+}
+
+.left{
+    width: 780px;
+    margin: 10px auto 0;
+    padding: 10px 20px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: left;
+    background-color: #222;
+    border-radius: 5px;
+}
+h2{
+    font-size: 24px;
+    line-height: 48px;
+    font-weight: bold;
+    width: 820px;
+    height: 48px;
+    margin: 30px auto 0;
+    background-color: #933;
+    border: solid #933 2px;
+    border-radius: 5px;
+}
+footer{ margin: 30px auto 0; }
+
+
+/* yaku *************************************************/
+
+.yaku{
+    width: 800px;
+    margin: 10px auto 0;
+    padding: 10px;
+    border: solid #666 2px;
+    border-radius: 5px;
+}
+h3{
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: bold;
+}
+.yaku b{
+    color: #f00;
+    font-weight: normal;
+}
+.card{
+    margin: 10px auto;
+    padding: 20px 15px;
+    width: 500px;
+    height: 60px;
+    background-color: black;
+    border-radius: 10px;
+}
+.bk , .rd , .jk{
+    float: left;
+    width: 40px;
+    height: 48px;
+    margin: 0 5px;
+    padding: 6px 0;
+    background-color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 5px;
+}
+.jk{
+    color: #336;
+    font-size: 32px;
+    line-height: 48px;
+}
+.bk{color: #000}
+.rd{color: #f00;}
+.gray{
+    background-color: #ccc;
+}
+
+
+
+/* tablet ***********************************************/
+
+@media screen and (max-width: 960px){
+    #wrap{
+        width: 95%;
+    }
+    div.left , div.yaku , h2{
+        width: 100%;
+        padding: 0;
+    }
+    .yaku h3{
+        margin: 10px 0 0;
+    }
+    .yaku p{
+        margin: 0 10px 5px;
+    }
+}
+
+
+
+/* smartphone *******************************************/
+@media screen and (max-width: 600px){
+    .card{
+        width: 100%;
+        padding: 0;
+        overflow: auto;
+        height: auto;
+    }
+    .bk , .rd{ margin: 5px; }
+}
