@@ -4,7 +4,7 @@ html{
 html::before {
     content: "";
     display: block;
-    background-image: url(https://psephopaiktes.github.io/bookmarklets/firstview-cheker/iphone7.png);
+    background-image: url(https://psephopaiktes.github.io/pages/bookmarklets/firstview-cheker/iphone7.png);
     background-size: 100vw;
     position: fixed;
     top: 0;
