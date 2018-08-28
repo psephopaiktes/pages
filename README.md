@@ -7,5 +7,5 @@
 ## [bookmarklets](https://psephopaiktes.github.io/pages/bookmarklets)
 super cool awesome Bookmarklets.
 
-## [bookmark]()
+## [bookmark](https://github.com/psephopaiktes/pages/tree/master/bookmarks)
 [このスライド]()で公開してるブックマークHTMLファイルを置いてます。
