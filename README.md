@@ -6,3 +6,6 @@
 
 ## [bookmarklets](https://psephopaiktes.github.io/pages/bookmarklets)
 super cool awesome Bookmarklets.
+
+## [bookmark]()
+[このスライド]()で公開してるブックマークHTMLファイルを置いてます。
