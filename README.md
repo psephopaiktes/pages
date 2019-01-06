@@ -8,4 +8,7 @@
 super cool awesome Bookmarklets.
 
 ## [bookmark](https://github.com/psephopaiktes/pages/tree/master/bookmarks)
-[このスライド]()で公開してるブックマークHTMLファイルを置いてます。
+[このスライド](https://speakerdeck.com/psephopaiktes/browser-bookmarks-technique)で公開してるブックマークHTMLファイルを置いてます。
+
+## [Hello Dribbble](https://psephopaiktes.github.io/pages/dribbble/)
+[Dribbble用](https://dribbble.com/shots/5795003-Hello-Dribbble)に作成したアートワークです。
