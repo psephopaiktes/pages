@@ -12,3 +12,8 @@ super cool awesome Bookmarklets.
 
 ## [Hello Dribbble](https://psephopaiktes.github.io/pages/dribbble/)
 [Dribbble用](https://dribbble.com/shots/5795003-Hello-Dribbble)に作成したアートワークです。
+
+## Separator
+- [Vertical](https://psephopaiktes.github.io/pages/separator/vertical.html)
+- [Horizontal](https://psephopaiktes.github.io/pages/separator/horizontal.html)
+ブックマークするとブラウザに区切り線をつくるサイトです。
