@@ -75,6 +75,19 @@
     </section>
 
     <section class="bookmarklet">
+        <h2>日本語を含むURLをエンコードせずにコピー</h2>
+        <p>開いているWebサイトのURLが日本語を含む場合、そのまま開くとエンコードされて無駄に長いURLになってしまいます。このブックマークレットなら日本語のままURLをコピーできます。</p>
+        <a href="
+        javascript:!function(a){
+            var b = document.createElement('textarea'),
+            c = document.getSelection();
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+        }( decodeURI( document.location ) );
+        ">copy link as Japanese</a><br>
+        <small>このボタンをブックマークバーにドラッグします</small>
+    </section>
+
+    <section class="bookmarklet">
         <h2>Google検索の期間指定</h2>
         <p>Google検索の結果ページで実行すると、対象のサイトを3年間以内のものに限定します。</p>
         <a href="
