@@ -12,19 +12,21 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
-<div class="wrap">
-
+<body><div class="wrap">
 
     <!-- header-->
     <header>
         <h1>Cool Bookmarklets</h1>
-        <p>ブラウザをより便利に利用できるようになる<b>ブックマークレット</b>の紹介です。ブックマークレットとは、ブラウザのブックマークに登録しておき、特定のWebサイト上でクリックすることで利用できるプログラムです。例えば見ているWebサイトを素早くSNSでシェアしたり、URLをコピーしたりできます。Chrome拡張機能と違ってメモリを専有したりせず、気軽に利用できます。ブックマークバー上にフォルダを作ってまとめておくと、たくさん登録しても邪魔になりません。</p>
-        <h2>使い方</h2>
-        <ol>
-            <li>利用したいブックマークレットのボタンをブラウザのブックマークバーにドラッグ・アンド・ドロップして、ブックマークとして登録しておきます。
-            <li>対象となるWebサイトを開き、そのサイト上で登録しておいたブックマークレットをクリックします。
-        </ol>
+        <a href="https://github.com/psephopaiktes/pages" target="brank_">[view on GitHub]</a>
+        <p>ブラウザをより便利に利用できるようになる<b>ブックマークレット</b>の紹介です。ブックマークレットとは、ブラウザのブックマークに登録しておき、特定のWebサイト上でクリックすることで利用できるプログラムです。</p>
+        <p>開いているWebサイトを素早くSNSでシェアしたり、ページタイトルをコピーしたりできます。Chrome拡張機能と違ってメモリを専有したりせず、気軽に利用できます。ブックマークバー上にフォルダを作ってまとめておくと、たくさん登録しても邪魔になりません。</p>
+        <section>
+            <h3>使い方</h3>
+            <ol>
+                <li>利用したいブックマークレットのボタンをブラウザのブックマークバーにドラッグ・アンド・ドロップして、ブックマークとして登録しておきます。
+                <li>対象となるWebサイトを開き、そのサイト上で登録しておいたブックマークレットをクリックします。
+            </ol>
+        </section>
         <p>本ページ内で直接公開しているものは私が作成したブックマークレットです。SNSでのシェアなどは公式や外部の方が作られたものなどいろいろありますが、再配布を禁止しているところもあるので外部リンクで紹介しておきます。</p>
     </header>
 
@@ -39,9 +41,26 @@
         <p>開いているWebサイトのタイトル( titleタグに指定されているテキスト )をクリップボードにコピーします。通常サイトのタイトルはソースを確認しないとコピーできないので、地味に便利です。</p>
         <a href="
         javascript:!function(a){
+            var s=document.createElement('style');
+            s.innerText=`
+                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
+                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
+            `;
+            document.head.appendChild(s);
+
+            const sb = document.createElement('p');
+            sb.className= 'bookmarklet-snackbar';
+            sb.innerText = 'コピーしました。';
+            document.body.appendChild(sb);
+
             var b = document.createElement('textarea'),
             c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+
+            sb.className= 'bookmarklet-snackbar show-snackbar';
+            setTimeout(()=>{
+                sb.className= 'bookmarklet-snackbar';
+            }, 1500);
         }(document.title);
         ">copy title</a><br>
     </section>
@@ -51,10 +70,27 @@
         <p>開いているWebサイトのURLとタイトルを、HTMLのaタグ形式でクリップボードにコピーします。</p>
         <a href="
         javascript:!function(a){
+            var s=document.createElement('style');
+            s.innerText=`
+                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
+                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
+            `;
+            document.head.appendChild(s);
+
+            const sb = document.createElement('p');
+            sb.className= 'bookmarklet-snackbar';
+            sb.innerText = 'コピーしました。';
+            document.body.appendChild(sb);
+
             var b = document.createElement('textarea'),
             c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
-        }('<a href=%22' + document.location + '%22 target=%22brank_%22>' + document.title + '</a>');
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+
+            sb.className= 'bookmarklet-snackbar show-snackbar';
+            setTimeout(()=>{
+                sb.className= 'bookmarklet-snackbar';
+            }, 1500);
+        }('<a href=%22' + document.location + '%22 target=%22brank_%22 rel=%22noopener%22>' + document.title + '</a>');
         ">copy html link</a><br>
     </section>
 
@@ -63,9 +99,26 @@
         <p>開いているWebサイトのURLを、Markdwonのリンク形式でクリップボードにコピーします。</p>
         <a href="
         javascript:!function(a){
+            var s=document.createElement('style');
+            s.innerText=`
+                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
+                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
+            `;
+            document.head.appendChild(s);
+
+            const sb = document.createElement('p');
+            sb.className= 'bookmarklet-snackbar';
+            sb.innerText = 'コピーしました。';
+            document.body.appendChild(sb);
+
             var b = document.createElement('textarea'),
             c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+
+            sb.className= 'bookmarklet-snackbar show-snackbar';
+            setTimeout(()=>{
+                sb.className= 'bookmarklet-snackbar';
+            }, 2000);
         }( '[' + document.title +'](' + document.location + ')' );
         ">copy md link</a><br>
     </section>
@@ -75,11 +128,57 @@
         <p>開いているWebサイトのURLが日本語を含む場合、そのまま開くとエンコードされて無駄に長いURLになってしまいます。このブックマークレットなら日本語のままURLをコピーできます。</p>
         <a href="
         javascript:!function(a){
+            var s=document.createElement('style');
+            s.innerText=`
+                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
+                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
+            `;
+            document.head.appendChild(s);
+
+            const sb = document.createElement('p');
+            sb.className= 'bookmarklet-snackbar';
+            sb.innerText = 'コピーしました。';
+            document.body.appendChild(sb);
+
             var b = document.createElement('textarea'),
             c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b)
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+
+            sb.className= 'bookmarklet-snackbar show-snackbar';
+            setTimeout(()=>{
+                sb.className= 'bookmarklet-snackbar';
+            }, 2000);
         }( decodeURI( document.location ) );
         ">copy link as Japanese</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>AmazonのURLを短縮してコピー</h2>
+        <p>AmazonのURLは通常、不要な情報が多く含まれて長くなっています。このURLの無駄な部分を省略して、最短のURLに変更してコピーします。</p>
+        <a href="
+        javascript:!function(a){
+            var s=document.createElement('style');
+            s.innerText=`
+                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
+                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
+            `;
+            document.head.appendChild(s);
+
+            const sb = document.createElement('p');
+            sb.className= 'bookmarklet-snackbar';
+            sb.innerText = 'コピーしました。';
+            document.body.appendChild(sb);
+
+            var b = document.createElement('textarea'),
+            c = document.getSelection();
+            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+
+            sb.className= 'bookmarklet-snackbar show-snackbar';
+            setTimeout(()=>{
+                sb.className= 'bookmarklet-snackbar';
+            }, 2000);
+        }( 'https://amazon.jp/dp/' + document.location.href.substr(document.location.href.search(/(\/product\/|\/dp\/)/)).split('/')[2].substr(0, 10) );
+        ">copy short amazon link</a><br>
     </section>
 
     <section class="bookmarklet">
@@ -138,7 +237,7 @@
         ">search in domain</a><br>
     </section>
 
-    <section class="bookmarklet">
+    <!-- <section class="bookmarklet">
         <h2>スマホファーストビューチェッカー</h2>
         <p>スマホで見た時にファーストビューがどのような表示になるか、<b>ブラウザの枠付きで</b>確認できます。とりあえずiPhone7だけ対応です。</p>
         <a href="
@@ -154,9 +253,9 @@
         ">first-view</a><br>
         <h4>説明</h4>
         <p>事前にChromeのモバイルプレビューモードをONにします(⌘⌥I→⌘⇧M)。iPhone7を選択します。</p>
-    </section>
+    </section> -->
 
-    <section class="bookmarklet">
+    <!-- <section class="bookmarklet">
         <h2>クトゥルフ神話TRPG用ブックマークレット</h2>
         <p>かなりニッチなブックマークレットです。自分用に作成しました。クトゥルフ神話TPRGでキャラクターシートを作成する際に便利です。</p>
         <a href="
@@ -195,7 +294,7 @@
             <li>ボタンを押すと、クリップボードにキャラクターシートがコピーされます
             <li>メモ帳などにCtrl+Vでペーストしてください。
         </ul>
-    </section>
+    </section> -->
 
     <section class="bookmarklet">
         <h2>Twitterでシェア</h2>
@@ -209,12 +308,6 @@
         <h2>Facebookでシェア</h2>
         <p>現在開いているページをFacebookにシェアします。Facebook公式のブックマークレットです。</p>
         <cite>source:&nbsp;&nbsp;<a href="https://www.facebook.com/share_options.php" target="brank_">ブックマークレットを共有する</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>Google+でシェア</h2>
-        <p>現在開いているページをGoogle+でシェアします。Google公式のブックマークレットです。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://developers.google.com/+/web/share/#sharelink-bookmarklet" target="brank_">Share  |  Google+ Platform for Web  |  Google Developers</a></cite>
     </section>
 
     <section class="bookmarklet">
@@ -295,25 +388,25 @@
 
     <section class="bookmarklet">
         <h2>Webページで使われているフォントを調べる</h2>
-        <p>開発者向けツール。選択文字のフォント指定を表示できる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できる。</p>
+        <p>開発者向けツール。選択文字のフォント指定を表示できます。少し重いです。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できます。</p>
         <cite>source:&nbsp;&nbsp;<a href="http://www.chengyinliu.com/whatfont.html" target="brank_">WhatFont Tool - The easiest way to inspect fonts in webpages « Chengyin Liu</a></cite>
     </section>
 
     <section class="bookmarklet">
         <h2>ページのレスポンシブチェック</h2>
-        <p>開発者向けツール。Webページを他のデバイスで表示したときどのように表示されるかチェックできる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できる。</p>
+        <p>開発者向けツール。Webページを他のデバイスで表示したときどのように表示されるかチェックできる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できます。</p>
         <cite>source:&nbsp;&nbsp;<a href="http://lab.maltewassermann.com/viewport-resizer/" target="brank_">Responsive design testing tool – Viewport Resizer – Emulate various screen resolutions - Best developer device testing toolbar</a></cite>
     </section>
 
     <section class="bookmarklet">
         <h2>ページにグリッドを表示</h2>
-        <p>開発者向けツール。Webページにグリッドを重ねて表示してくれる。グリッドは自由に設定できる。</p>
+        <p>開発者向けツール。Webページにグリッドを重ねて表示してくれます。グリッドは自由に設定できます。</p>
         <cite>source:&nbsp;&nbsp;<a href="http://www.sprymedia.co.uk/article/Design" target="brank_">Allan Jardine | Reflections | Design</a></cite>
     </section>
 
     <section class="bookmarklet">
         <h2>Webページをシューティングゲームで破壊する</h2>
-        <p>すばらしいクソブックマークレットです。表示しているWebページ上でシューティングゲームができます。</p>
+        <p>表示しているWebページ上でシューティングゲームができます。</p>
         <cite>source:&nbsp;&nbsp;<a href="https://kickassapp.com/" target="brank_">Kick Ass - Destroy the web</a></cite>
     </section>
 
@@ -321,6 +414,7 @@
     <footer>
         <a id="gotop" href="#top" title="上へスクロール">▲</a>
         <a href="https://github.com/psephopaiktes/pages" target="brank_">view on GitHub</a>&nbsp;
+        <p>© Akira HIRATA</p>
     </footer>
 
 

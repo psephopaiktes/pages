@@ -26,6 +26,16 @@ header h1{
     letter-spacing: .05em;
     text-shadow: -0.03em 0 0 red, 0.03em 0 0 cyan;
 }
+header section {
+    background: #fafafa;
+    padding: 16px 32px 24px;
+}
+header section ol{
+    padding-left: 24px;
+}
+header section ol li{
+    margin-top: 16px;
+}
 
 nav{
     border-bottom: 1px dashed #999;
