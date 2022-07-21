@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
 
+<head>
     <title>Cool Bookmarklet</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,8 +10,8 @@
     <!-- css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body><div class="wrap">
 
     <!-- header-->
@@ -35,62 +35,36 @@
         <ul></ul>
     </nav>
 
-
     <section class="bookmarklet">
         <h2>サイトのタイトルをコピー</h2>
         <p>開いているWebサイトのタイトル( titleタグに指定されているテキスト )をクリップボードにコピーします。通常サイトのタイトルはソースを確認しないとコピーできないので、地味に便利です。</p>
         <a href="
-        javascript:!function(a){
-            var s=document.createElement('style');
-            s.innerText=`
-                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
-                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
-            `;
-            document.head.appendChild(s);
-
-            const sb = document.createElement('p');
-            sb.className= 'bookmarklet-snackbar';
-            sb.innerText = 'コピーしました。';
-            document.body.appendChild(sb);
-
-            var b = document.createElement('textarea'),
-            c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
-
-            sb.className= 'bookmarklet-snackbar show-snackbar';
-            setTimeout(()=>{
-                sb.className= 'bookmarklet-snackbar';
-            }, 1500);
-        }(document.title);
+        javascript:{
+            const text = document.title;
+            navigator.clipboard.writeText(text).then(()=>{alert('Copy as: ' + text);});
+        }
         ">copy title</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>サイトのタイトルとURLをコピー</h2>
+        <p>開いているWebサイトのタイトル( titleタグに指定されているテキスト )とURLをクリップボードにコピーします。</p>
+        <a href="
+        javascript:{
+            const text = document.title + ' ' + document.location;
+            navigator.clipboard.writeText(text).then(()=>{alert('Copy as: ' + text);});
+        }
+        ">copy title & URL</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>URLをHTML形式でコピー</h2>
         <p>開いているWebサイトのURLとタイトルを、HTMLのaタグ形式でクリップボードにコピーします。</p>
         <a href="
-        javascript:!function(a){
-            var s=document.createElement('style');
-            s.innerText=`
-                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
-                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
-            `;
-            document.head.appendChild(s);
-
-            const sb = document.createElement('p');
-            sb.className= 'bookmarklet-snackbar';
-            sb.innerText = 'コピーしました。';
-            document.body.appendChild(sb);
-
-            var b = document.createElement('textarea'),
-            c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
-
-            sb.className= 'bookmarklet-snackbar show-snackbar';
-            setTimeout(()=>{
-                sb.className= 'bookmarklet-snackbar';
-            }, 1500);
-        }('<a href=%22' + document.location + '%22 target=%22brank_%22 rel=%22noopener%22>' + document.title + '</a>');
+        javascript:{
+            const text = '<a href=%22' + document.location + '%22 target=%22_brank%22 rel=%22noopener%22>' + document.title + '</a>';
+            navigator.clipboard.writeText(text).then(()=>{alert('Copy as: ' + text);});
+        }
         ">copy html link</a><br>
     </section>
 
@@ -98,94 +72,52 @@
         <h2>URLをMarkdown形式でコピー</h2>
         <p>開いているWebサイトのURLを、Markdwonのリンク形式でクリップボードにコピーします。</p>
         <a href="
-        javascript:!function(a){
-            var s=document.createElement('style');
-            s.innerText=`
-                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
-                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
-            `;
-            document.head.appendChild(s);
-
-            const sb = document.createElement('p');
-            sb.className= 'bookmarklet-snackbar';
-            sb.innerText = 'コピーしました。';
-            document.body.appendChild(sb);
-
-            var b = document.createElement('textarea'),
-            c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
-
-            sb.className= 'bookmarklet-snackbar show-snackbar';
-            setTimeout(()=>{
-                sb.className= 'bookmarklet-snackbar';
-            }, 2000);
-        }( '[' + document.title +'](' + document.location + ')' );
+        javascript:{
+            const text = '[' + document.title +'](' + document.location + ')';
+            navigator.clipboard.writeText(text).then(()=>{alert('Copy as: ' + text);});
+        }
         ">copy md link</a><br>
     </section>
 
     <section class="bookmarklet">
-        <h2>日本語を含むURLをエンコードせずにコピー</h2>
-        <p>開いているWebサイトのURLが日本語を含む場合、そのまま開くとエンコードされて無駄に長いURLになってしまいます。このブックマークレットなら日本語のままURLをコピーできます。</p>
+        <h2>URLをリッチテキスト形式でコピー</h2>
+        <p>開いているWebサイトのURLを、リッチテキスト形式でクリップボードにコピーします。WordやSlackなどにリンク付きテキストとして貼り付けられます。</p>
         <a href="
-        javascript:!function(a){
-            var s=document.createElement('style');
-            s.innerText=`
-                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
-                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
-            `;
-            document.head.appendChild(s);
+        javascript:{
+            const base = document.createElement('span');
+            const link = document.createElement('a');
+            link.href = document.location;
+            link.appendChild(document.createTextNode(document.title));
 
-            const sb = document.createElement('p');
-            sb.className= 'bookmarklet-snackbar';
-            sb.innerText = 'コピーしました。';
-            document.body.appendChild(sb);
+            base.appendChild(link);
+            document.body.appendChild(base);
 
-            var b = document.createElement('textarea'),
-            c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
+            document.getSelection().selectAllChildren(base);
+            document.execCommand('copy');
+            document.body.removeChild(base);
 
-            sb.className= 'bookmarklet-snackbar show-snackbar';
-            setTimeout(()=>{
-                sb.className= 'bookmarklet-snackbar';
-            }, 2000);
-        }( decodeURI( document.location ) );
-        ">copy link as Japanese</a><br>
+            alert('Copy as: ' + document.title);
+        }
+        ">copy as rich text</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>AmazonのURLを短縮してコピー</h2>
         <p>AmazonのURLは通常、不要な情報が多く含まれて長くなっています。このURLの無駄な部分を省略して、最短のURLに変更してコピーします。</p>
         <a href="
-        javascript:!function(a){
-            var s=document.createElement('style');
-            s.innerText=`
-                .bookmarklet-snackbar { margin: 0; padding: 0 24px; position: fixed; opacity: 0; bottom: -64px; left: 50vw; transform: translateX(-50%); z-index: 99999; border-radius: 6px; color: #fff; font: 500 20px/48px Arial,Sans-Serif; letter-spacing: .05em; background: rgba(0,0,0,.4); backdrop-filter: blur(8px); box-shadow: 0px 8px 16px -8px rgba(0,0,0, 0.4);transition: .2s ease-out; }
-                .bookmarklet-snackbar.show-snackbar { bottom: 32px; opacity: 1; }
-            `;
-            document.head.appendChild(s);
-
-            const sb = document.createElement('p');
-            sb.className= 'bookmarklet-snackbar';
-            sb.innerText = 'コピーしました。';
-            document.body.appendChild(sb);
-
-            var b = document.createElement('textarea'),
-            c = document.getSelection();
-            b.textContent = a, document.body.appendChild(b), c.removeAllRanges(), b.select(), document.execCommand('copy'), c.removeAllRanges(), document.body.removeChild(b);
-
-            sb.className= 'bookmarklet-snackbar show-snackbar';
-            setTimeout(()=>{
-                sb.className= 'bookmarklet-snackbar';
-            }, 2000);
-        }( 'https://amazon.jp/dp/' + document.location.href.substr(document.location.href.search(/(\/product\/|\/dp\/)/)).split('/')[2].substr(0, 10) );
+        javascript:{
+            if(!document.URL.match(/amazon/)) alert('This is not amazon page.');
+            const text = 'https://' +  document.location.host + '/dp/' + document.location.href.substr(document.location.href.search(/(\/product\/|\/dp\/)/)).split('/')[2].substr(0, 10);
+            navigator.clipboard.writeText(text).then(()=>{alert('Copy as: ' + text);});
+        }
         ">copy short amazon link</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>ブラウザで隠されたパスワードを表示</h2>
-        <p>フォームに「*」などで隠された状態で入力されているパスワードを表示します。</p>
+        <p>フォームに「*」などで隠された状態で自動入力されているパスワードを表示します。</p>
         <a href="
-        javascript: (function () {
+        javascript:{
             var s = '', F = document.forms, j, f, i;
             for (j = 0; j < F.length;++j) {
               f = F[j];
@@ -195,7 +127,7 @@
             }
             if (s) alert('Passwords in forms on this page:\n\n' + s);
             else alert('There are no passwords in forms on this page.');
-        })();
+        }
         ">Show hidden password</a><br>
     </section>
 
@@ -203,37 +135,75 @@
         <h2>Google検索の期間指定</h2>
         <p>Google検索の結果ページで実行すると、対象のサイトを3年間以内のものに限定します。</p>
         <a href="
-        javascript:!function(undefined){
+        javascript:{
             var today = new Date(),
                 y = today.getFullYear(),
                 m = today.getMonth()+1,
                 d = today.getDate();
-            console.log(m+'/'+d+'/'+y);
             if( location.host=='www.google.co.jp' || location.host=='www.google.com' )
                 location.href=document.location+'%26tbs=cdr:1,cd_min:'+m+'/'+d+'/'+(y-3)+',cd_max:'+m+'/'+d+'/'+y;
-            else alert('this is NOT google site');
-        }();
+            else alert('this is NOT google search result');
+        }
         ">search in 3years</a><br>
     </section>
 
     <section class="bookmarklet">
-        <h2>サイトをGoogle翻訳</h2>
-        <p>日本語以外のWebページで実行すると、対象のサイトをGoogle翻訳で日本語に翻訳します。</p>
+        <h2>Google検索のパーソナルレコメンドをオフ</h2>
+        <p>Google検索の結果ページで実行すると、個人情報を反映させない一般的な結果で表示しなおします。</p>
         <a href="
-        javascript:!function(undefined){
+        javascript:{
+            if( location.host=='www.google.co.jp' || location.host=='www.google.com' )
+                location.href = location.href + '&pws=0';
+            else alert('this is NOT google search result');
+        }
+        ">Disable Personal Result</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Google検索を英語のページに絞り込む</h2>
+        <p>Google検索の結果ページで実行すると、英語のページに絞り込んで再表示します。公式ドキュメントや一次情報を探すのに便利です。</p>
+        <a href="
+        javascript:{
+            if( location.host=='www.google.co.jp' || location.host=='www.google.com' ) {
+                const searchParams = new URLSearchParams(window.location.search);
+                const q = searchParams.get('q');
+                location.href = 'https://www.google.com/search?gl=us&hl=en&q=' + q;
+            }
+            else alert('this is NOT google search result');
+        }
+        ">Only English Page</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>サイトをGoogle翻訳</h2>
+        <p>日本語以外のWebページで実行するとGoogle翻訳で日本語に翻訳します。</p>
+        <a href="
+        javascript:{
             window.open('https://translate.google.co.jp/translate?hl=ja&sl=auto&u='+location.href)
-        }();
+        }
         ">translate JP</a><br>
     </section>
 
     <section class="bookmarklet">
-        <h2>サイト内(ドメイン内)検索</h2>
-        <p>対象となるWebサイト全体の中(ドメイン内)でテキスト検索します。よくあるブックマークレットですが、挙動が微妙なものばかりなので自作しました。</p>
+        <h2>サイトを編集する</h2>
+        <p>任意のWebサイトを自由にテキスト編集できるようにします。</p>
         <a href="
-        javascript:!function(undefined){
-            var q = prompt('単語を入力し、Enterキーを押してください');
+        javascript:{
+            javascript:document.body.contentEditable = 'true';
+            document.designMode='on';
+            void 0;
+        }
+        ">Edit Site Text</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>サイト内(ドメイン内)検索</h2>
+        <p>対象となるWebサイト全体(ドメイン内)でテキスト検索します。よくあるブックマークレットですが、挙動が微妙なものばかりなので自作しました。</p>
+        <a href="
+        javascript:{
+            var q = prompt('Search Word:');
             window.open('https://www.google.co.jp/search?q='+q+'+site:'+location.host);
-        }();
+        }
         ">search in domain</a><br>
     </section>
 
@@ -298,116 +268,195 @@
 
     <section class="bookmarklet">
         <h2>Twitterでシェア</h2>
-        <p>現在開いているページをTwitterでつぶやきます。Twitter公式のブックマークレットです。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://dev.twitter.com/web/bookmarklet" target="brank_">Share Bookmarklet — Twitter Developers</a></cite>
-        <p>ただし、公式そのままだとhttpsのサイトでうまく動作しないため、以下のサイトで紹介されているものを利用することをおすすめします。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://eltransportador.seesaa.net/article/388305065.html" target="brank_">Twitterの共有ブックマークレットをHTTPSなサイトでも使えるように: DNAが支配する世界</a></cite>
+        <p>現在開いているページをTwitterでつぶやきます。</p>
+        <a href="
+        javascript:{
+            window.open(`https://twitter.com/intent/tweet?text=${document.title}&url=${location.href}`);
+        }
+        ">Share on Twitter</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>ページパフォーマンスを計測</h2>
+        <p>現在開いているページの品質をWeb.devで計測します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://web.dev/measure/?url=${location.href}`);
+        }
+        ">Measure page quality</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>Facebookでシェア</h2>
-        <p>現在開いているページをFacebookにシェアします。Facebook公式のブックマークレットです。</p>
+        <p>現在開いているページをFacebookにシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${location.href}`);
+        }
+        ">Share on Facebook</a><br>
         <cite>source:&nbsp;&nbsp;<a href="https://www.facebook.com/share_options.php" target="brank_">ブックマークレットを共有する</a></cite>
     </section>
 
     <section class="bookmarklet">
         <h2>はてなブックマークに登録</h2>
-        <p>現在開いているページをはてブします。はてな公式のブックマークレットです。(確認にはログインが必要です。)</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://b.hatena.ne.jp/register" target="brank_">はてなブックマーク - はてなブックマークをはじめる (セットアップ)</a></cite>
+        <p>現在開いているページをはてブ登録します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://b.hatena.ne.jp/entry/${location.href}`);
+        }
+        ">Save to Hatebu</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>Tumblrでシェア</h2>
-        <p>現在開いているページをTumblrにシェアします。Tumblr公式のブックマークレットです。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://www.tumblr.com/apps" target="brank_">アプリ | Tumblr</a></cite>
+        <p>現在開いているページをTumblrにシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://www.tumblr.com/widgets/share/tool?canonicalUrl=${location.href}&title=${document.title}`);
+        }
+        ">Share on Tumblr</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>LINEでシェア</h2>
+        <p>現在開いているページをLINEでシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://line.me/R/msg/text/?${document.title}%0D%0A%20${location.href}`);
+        }
+        ">Share on LINE</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>LinkedInでシェア</h2>
+        <p>現在開いているページをLinkedInでシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${location.href}`);
+        }
+        ">Share on LinkedIn</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>noteでシェア</h2>
+        <p>現在開いているページをnoteでシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://note.com/intent/post?url=${location.href}`);
+        }
+        ">Share on note</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>redditでシェア</h2>
+        <p>現在開いているページをredditでシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://www.reddit.com/submit?url=${location.href}&title=${document.title}`);
+        }
+        ">Share on reddit</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>bufferでシェア</h2>
+        <p>現在開いているページをbufferでシェアします。</p>
+        <a href="
+        javascript:{
+            window.open(`https://buffer.com/add?url=${location.href}&text=${document.title}`);
+        }
+        ">Share on buffer</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>印刷する</h2>
+        <p>現在開いているページを印刷します。</p>
+        <a href="
+        javascript:{
+            window.print();
+        }
+        ">Print</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Google でキャッシュを探す</h2>
+        <p>削除されてしまったWebサイトのキャッシュを Google で検索して表示します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://webcache.googleusercontent.com/search?q=cache:${location.href}`);
+        }
+        ">Search Cache in Google</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Internet Archiveでキャッシュを探す</h2>
+        <p>削除されてしまったWebサイトのキャッシュを Internet Archive で検索して表示します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://web.archive.org/web/*/${location.href}`);
+        }
+        ">Search Cache in Internet Archive</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>Gyo.tc でキャッシュを探す</h2>
+        <p>削除されてしまったWebサイトのキャッシュを Gyo.tc で検索して表示します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://gyo.tc/?url=${location.href}`);
+        }
+        ">Search Cache in Gyo.tc</a><br>
+    </section>
+
+    <section class="bookmarklet">
+        <h2>QRを取得</h2>
+        <p>現在開いているページのPRコードを表示します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=${location.href}&choe=UTF-8`);
+        }
+        ">Show QR Code</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>Gmailで送信</h2>
         <p>現在開いているページをGmailで送信します。</p>
         <a href="
-        javascript: (function () {
-          open(
-            'https://gmail.google.com/gmail?fs=1&tf=1&view=cm&su='
-            + encodeURIComponent(document.title)
-            + '&body='
-            + encodeURIComponent(document.location.href),
-          '_blank');
-        })()
+        javascript:{
+          window.open(`https://gmail.google.com/gmail?fs=1&tf=1&view=cm&su=${encodeURIComponent(document.title)}&body=${encodeURIComponent(document.location.href)}`);
+        }
         ">Send by Gmail</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>Pocketに保存</h2>
-        <p>現在開いているページをPocketに保存します。Pocket公式のブックマークレットです。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://getpocket.com/add/?ep=1" target="brank_">Pocket: 保存方法</a></cite>
+        <p>現在開いているページをPocketに保存します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://getpocket.com/save?url=${location.href}`);
+        }
+        ">Save to Pocket</a><br>
     </section>
 
     <section class="bookmarklet">
-        <h2>Feedlyに登録</h2>
-        <p>現在開いているページのRSSをFeedlyに登録するためのページを開きます。Feedly以外の利用者のためのブックマークレットもあります。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://daisukeblog.com/?p=2268" target="brank_">ニュースリーダー『Feedly』の新規登録などのブックマークレットまとめ | 代助のブログ</a></cite>
+        <h2>Feedlyで検索</h2>
+        <p>現在開いているページのRSSをFeedlyで検索します。</p>
+        <a href="
+        javascript:{
+            window.open(`https://feedly.com/i/discover/sources/search/feed/${location.href}`);
+        }
+        ">Search RSS on Feedly</a><br>
     </section>
 
     <section class="bookmarklet">
         <h2>Pinterestに画像をピンする</h2>
-        <p>現在開いているページの画像を選択してピンできます。Pinterest公式では公開が終了していますが、こちらに登録の説明があります。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://gist.github.com/kentbrew/142cb69124223a5d0f3b3fd7fc2c6bd0" target="brank_">How to recreate your long-lost Pinterest bookmarklet.</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>テンプレートからGmailを作成 / ページをGmailで共有</h2>
-        <p>事前にテンプレートを設定でき、実行するとすぐにその形からメールを作成できる。もうひとつは、在開いているページのタイトル・URLを本文に含めてメール作成できる。かなり古いブックマークレットですが問題無く動きます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://bookmarklet.web.fc2.com/bookmarklet_070.html" target="brank_">Gmailテンプレート :: ブックマークレット</a></cite>
-        <cite>source:&nbsp;&nbsp;<a href="http://bookmarklet.web.fc2.com/bookmarklet_046.html" target="brank_">Gmailで送信 :: ブックマークレット</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>YouTubeを保存する</h2>
-        <p>YouTubeの動画をmp3(音声)、mp4(動画)で保存できるサービス"Offliberty"が提供するブックマークレットです。YouTubeで動画を開き実行すると、開いている動画を変換してくれます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://offliberty.com/#bookmarklet" target="brank_">Offliberty - evidence of offline life</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>次/前のページへ</h2>
-        <p>URL中の数字を増加する、つまり複数あるページの次/前のページへ移動できるブックマークレットです。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://www.squarefree.com/bookmarklets/misc.html#increment" target="brank_">Miscellaneous Bookmarklets</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>ページの読み込み速度を計測する</h2>
-        <p>開発者向けツール。実行すると開いているページの読み込み速度を計測します。ブックマークレットはページの一番下にあります。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://okor.github.io/justice/" target="brank_">justice</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>ページのHTMLチェック</h2>
-        <p>開発者向けツール。HTMLが正しい文法・規約に沿って記述されているかとアクセシビリティのチェックし、レポートを出力してくれる。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://htmlcs.acri.jp/" target="brank_">HTML_CodeSniffer</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>Webページで使われているフォントを調べる</h2>
-        <p>開発者向けツール。選択文字のフォント指定を表示できます。少し重いです。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://www.chengyinliu.com/whatfont.html" target="brank_">WhatFont Tool - The easiest way to inspect fonts in webpages « Chengyin Liu</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>ページのレスポンシブチェック</h2>
-        <p>開発者向けツール。Webページを他のデバイスで表示したときどのように表示されるかチェックできる。少し重い。Chromeブラウザのデフォルト機能でも同じようなことは可能だが、より気軽に利用できます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://lab.maltewassermann.com/viewport-resizer/" target="brank_">Responsive design testing tool – Viewport Resizer – Emulate various screen resolutions - Best developer device testing toolbar</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>ページにグリッドを表示</h2>
-        <p>開発者向けツール。Webページにグリッドを重ねて表示してくれます。グリッドは自由に設定できます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="http://www.sprymedia.co.uk/article/Design" target="brank_">Allan Jardine | Reflections | Design</a></cite>
-    </section>
-
-    <section class="bookmarklet">
-        <h2>Webページをシューティングゲームで破壊する</h2>
-        <p>表示しているWebページ上でシューティングゲームができます。</p>
-        <cite>source:&nbsp;&nbsp;<a href="https://kickassapp.com/" target="brank_">Kick Ass - Destroy the web</a></cite>
+        <p>現在開いているページをピンできます。</p>
+        <a href="
+        javascript:{
+            const script = document.createElement('script');
+            script.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r=%27+Math.random()*99999999);
+            document.body.appendChild(script);
+        }
+        ">Share on Pinterest</a><br>
     </section>
 
     <!-- Footer-->
@@ -419,11 +468,6 @@
 
 
 <!--
-
-// 公開が終了しているブックマークレット。自分用メモ
-
-# Pinterest
-javascript:void((function(d){e=d.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);d.body.appendChild(e);}(document)));
 
 # Amazonほしいものリストに追加する
 javascript:(function(){var w=window,l=w.location,d=w.document,s=d.createElement('script'),e=encodeURIComponent,o='object',n='AUWLBookjaJP',u='https://www.amazon.co.jp/wishlist/add',r='readyState',T=setTimeout,a='setAttribute',g=function(){d[r]&&d[r]!='complete'?T(g,200):!w[n]?(s[a]('charset','UTF-8'),s[a]('src',u+'.js?loc='+e(l)+'&b='+n),d.body.appendChild(s),f()):f()},f=function(){!w[n]?T(f,200):w[n].showPopover()};typeof s!=o?l.href=u+'?u='+e(l)+'&t='+e(d.title):g()}())

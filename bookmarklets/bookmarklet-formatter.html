@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarklet Formatter</title>
+    <style>
+        body{
+            padding: 240px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <label>
+            <p>JS</p>
+            <textarea id="js-source" cols="30" rows="10"></textarea>
+        </label>
+
+        <label>
+            <p>TITLE</p>
+            <input type="text" id="title">
+        </label>
+
+        <label>
+            <p>ICON</p>
+            <input type="file" id="icon">
+        </label>
+
+        <p>
+            <button id="convert">CONVERT</button>
+        </p>
+    </form>
+
+<script>
+    // js compresss したい
+document.getElementById('convert').addEventListener('click', ()=>{
+
+    let source = document.getElementById('js-source').value;
+    source = source.replace(/\r?\n/g, '');
+    source = source.replace(/  /g,'');
+
+    const title = document.getElementById('title').value;
+
+    const icon = document.getElementById('icon').files[0];
+    const reader = new FileReader()
+
+    reader.onload = (event) => {
+        const base64 = event.currentTarget.result
+
+        const result = `<DT><A HREF="${source}" ICON="${base64}">${title}</A>`;
+        navigator.clipboard.writeText(result);
+    }
+    reader.readAsDataURL(icon)
+
+});
+</script>
+</body>
+</html>
