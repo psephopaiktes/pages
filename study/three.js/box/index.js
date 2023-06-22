@@ -14,12 +14,12 @@ function init() {
   const scene = new THREE.Scene();
 
   // カメラ
-  const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+  const camera = new THREE.PerspectiveCamera(45, width / height);
   camera.position.set(0, 0, 1000); // 初期座標を設定（X座標:0, Y座標:0, Z座標:0）
 
   // モデリング: 箱を作成
-  const geometry = new THREE.BoxGeometry(500, 500, 500);
-  const material = new THREE.MeshStandardMaterial({color: 0x0000FF});
+  const geometry = new THREE.BoxGeometry(400, 400, 400);
+  const material = new THREE.MeshNormalMaterial();
   const box = new THREE.Mesh(geometry, material);
   scene.add(box);
 
