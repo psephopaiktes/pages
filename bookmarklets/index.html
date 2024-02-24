@@ -36,6 +36,30 @@
     </nav>
 
     <section class="bookmarklet">
+        <h2>XのプロフィールページをBlueskyで開く</h2>
+        <p>開いているXのアカウント(https://twitter.com/psephopaiktes など)と同名のBlueskyアカウントを開きます。</p>
+        <p><small>※同IDのアカウントが存在しない場合は当然エラーになります</small></p>
+        <p><small>※同IDでなりすましているアカウントもありあえるのでご注意</small></p>
+        <a href="
+        javascript:{
+            var currentURL = window.location.href;
+            var twitterRegex = /^https:\/\/twitter\.com\/[a-zA-Z0-9_]+(?:\/(following|followers))?$/;
+            var profileRegex = /^https:\/\/twitter\.com\/([a-zA-Z0-9_]+)$/;
+            
+            if (!twitterRegex.test(currentURL)) {
+                alert("Twitterのサイト上で実行してください");
+                return;
+            }
+            
+            if (profileRegex.test(currentURL)) {
+                var username = currentURL.match(profileRegex)[1];
+                window.open("https://bsky.app/profile/" + username + ".bsky.social");
+            }
+        }
+        ">copy title</a><br>
+    </section>
+
+    <section class="bookmarklet">
         <h2>サイトのタイトルをコピー</h2>
         <p>開いているWebサイトのタイトル( titleタグに指定されているテキスト )をクリップボードにコピーします。通常サイトのタイトルはソースを確認しないとコピーできないので、地味に便利です。</p>
         <a href="
