@@ -42,16 +42,9 @@
         <a href="
         javascript:{
             var currentURL = window.location.href;
-            var twitterRegex = /^https:\/\/twitter\.com\/[a-zA-Z0-9_]+(?:\/(following|followers))?$/;
             var profileRegex = /^https:\/\/twitter\.com\/([a-zA-Z0-9_]+)$/;
-            if (!twitterRegex.test(currentURL)) {
-                alert("Twitterのサイト上で実行してください");
-                return;
-            }
-            if (profileRegex.test(currentURL)) {
-                var username = currentURL.match(profileRegex)[1];
-                window.open("https://bsky.app/profile/" + username + ".bsky.social");
-            }
+            var username = currentURL.match(profileRegex)[1];
+            window.open("https://bsky.app/profile/" + username + ".bsky.social");
         }
         ">open in Bsky</a><br>
     </section>
