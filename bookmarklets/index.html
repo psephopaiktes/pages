@@ -45,18 +45,16 @@
             var currentURL = window.location.href;
             var twitterRegex = /^https:\/\/twitter\.com\/[a-zA-Z0-9_]+(?:\/(following|followers))?$/;
             var profileRegex = /^https:\/\/twitter\.com\/([a-zA-Z0-9_]+)$/;
-            
             if (!twitterRegex.test(currentURL)) {
                 alert("Twitterのサイト上で実行してください");
                 return;
             }
-            
             if (profileRegex.test(currentURL)) {
                 var username = currentURL.match(profileRegex)[1];
                 window.open("https://bsky.app/profile/" + username + ".bsky.social");
             }
         }
-        ">copy title</a><br>
+        ">open in Bsky</a><br>
     </section>
 
     <section class="bookmarklet">
